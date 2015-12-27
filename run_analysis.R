@@ -33,6 +33,7 @@ total_data<-rbind(train_data,test_data)
 total_data<-mutate(total_data,MeasureMean=rowMeans(total_data[,3:563],na.rm=TRUE))
 
 # Similarly, compute the StdDev of all measurements and store in new column
+# The rowSDs is part of the matrixStats package, and it takes only a matrix as input, hence converting each row into a matrix before calulating the SD
 total_data<-mutate(total_data,MeasureSD=rowSds(as.matrix(total_data[,3:563]),na.rm=TRUE))
 
 # Extract only the Mean and SD columns of all measurements, i.e. Omit detailed Measurements
